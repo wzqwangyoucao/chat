@@ -15,7 +15,7 @@ const User = mongoose.model('user',new mongoose.Schema({
     user:{type:String,require:true},//true表示字段是必须要有的
     age:{type:Number,require:true}
 }))
-新增数据
+// 新增数据
 User.create({
     user:'react',
     age:18,
