@@ -16,31 +16,63 @@ const User = mongoose.model('user',new mongoose.Schema({
     age:{type:Number,require:true}
 }))
 // 新增数据
-User.create({
-    user:'react',
-    age:18,
-},function(err,doc){
-    if(!err){
-        console.log(doc);
-    }
-    else{
-        console.log(err);
-    }
-})
+// User.create({
+//     user:'react',
+//     age:18,
+// },function(err,doc){
+//     if(!err){
+//         console.log(doc);
+//     }
+//     else{
+//         console.log(err);
+//     }
+// })
 //类似于mysql mongo里面有文档 字段的概念
+
+// 删除数据
+// User.remove({
+//     age:18,
+// },function(err,doc){
+//     if(!err){
+//         console.log(doc);
+//     }
+//     else{
+//         console.log(err);
+//     }
+// })
+
+// 更新数据
+// User.update(
+//     {'user':"react",},
+//     {'$set':{age:26}},
+//     function(err,doc){
+//         console.log(doc);
+//     }
+// )
 const app = express();
 //使用function//创建了对象
+//引入框架之后，新建app
+//监听两个路由 / /data
 
 app.get('/',function(req,res){//请求 相应
     res.send('<h1>Hello Word</h1>')//返回数据的方法
 })
 app.get('/data',function(req,res){//请求 相应
     User.find({},function(err,doc){
-        res.json(doc);
+       res.json(doc);
     })
-    res.json({name:0,course:1});//返回数据的方法
+    // User.find({user:"xiaoming"},function(err,doc){
+    //     res.json(doc);
+    //  })
+    //  User.findOne({user:"xiaoming"},function(err,doc){
+    //     res.json(doc);
+    //  })
+    // res.json({name:0,course:1});//返回数据的方法
 
 })
+// app.get('/delete',function(req,res){
+
+// })
 app.listen(9093,function(){
     console.log('Node app start port at 9093');
 })
