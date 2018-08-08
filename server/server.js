@@ -4,6 +4,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 //引入库
 const DB_URL = 'mongodb://127.0.0.1:27017/react';
+
+
 //链接mongo 并且使用react集合
 mongoose.connect(DB_URL);
 mongoose.connection.on('connected',function(){
