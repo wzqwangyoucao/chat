@@ -9,13 +9,13 @@ class AuthRoute extends React.Component {
         const publicList = ['/login','/register']
         const pathname = this.props.location.pathname
         // console.log(this.props.location.pathname);
-        if(publicList.indexOf(pathname)>-1){
+        if(publicList.indexOf(pathname)>-1){//这两个路由不用获取用户信息
             return null;
         }
         //获取用户信息
         axios.get('/user/info')//发请求
             .then(res=>{
-                if(res.status===200){
+                if(res.status==200){
                     if(res.data.code==0){
                         //有登陆信息的
                     }
@@ -33,10 +33,6 @@ class AuthRoute extends React.Component {
 
         // 用户的type 身份是boss还是牛人
         // 用户是否完善信息（选择头像，个人简介）
-    }
-    constructor(props) {
-        super(props);
-        this.state = {  };
     }
     render() {
         return (

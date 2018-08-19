@@ -4,16 +4,21 @@ mongoose.connect(DB_URL);
 
 
 const models = {
+    // 模型
     user:{
+        // 字段
         'user':{type:String,require:true},
         'pwd':{type:String,require:true},
-        'type':{type:String,require:true},
-        'avatar':{type:String},
-        'desc':{type:String},
-        'title':{type:String},
-
-        'compony':{type:String},
-        'money':{type:String}
+        'type':{'type':String,require:true},
+        // 头像
+        'avatar':{'type':String},
+        //个人简介
+        'desc':{'type':String},
+        //职位名
+        'title':{'type':String},
+        // boss字段多两个   公司  钱
+        'company':{'type':String},
+        'money':{'type':String}
     },
     chat:{
 
