@@ -25,7 +25,7 @@ const models = {
     }
 }
 
-for(let m in models){
+for(let m in models){//key 2
     mongoose.model(m,new mongoose.Schema(models[m]))
 }
 
