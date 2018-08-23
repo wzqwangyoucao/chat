@@ -13,6 +13,7 @@ import reducers from './reducer.js'//多个reducer合并
 import Login from './container/login/login.js';
 import Register from './container/register/register.js';
 import './index.css'
+import BossInfo from './container/bossinfo/bossinfo.js'
 
 
 
@@ -32,7 +33,9 @@ ReactDom.render(
             <div>
                 <AuthRoute></AuthRoute>
                 {/* 检测路由 */}
-                <Route path="/boss" component={Boss}></Route>
+                {/* <Route path="/boss" component={Boss}></Route> */}
+
+                <Route path="/bossinfo" component={BossInfo}></Route>
                 <Route path="/login" component={Login}></Route>
                 <Route path="/register" component={Register}></Route>
             </div>
