@@ -35,7 +35,7 @@ Router.post('/register',function(req,res){//引入body-parser
         // User.create(,)
     })
 })
-Router.post('/updade',function(req,res){
+Router.post('/update',function(req,res){
     const userid = req.cookies.userid//这里怎么就没有传入cookie就直接校验了
     if(!userid){
         return json.dumps({code:1})
