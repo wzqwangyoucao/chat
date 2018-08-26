@@ -9,14 +9,12 @@ import {Redirect} from 'react-router-dom'
     {updata}
 )
 
-class BossInfo extends React.Component {
+class GeniusInfo extends React.Component {
     constructor(props) {
         super(props);
         this.state = { 
             title:'',
-            desc:'',
-            company:'',
-            money:''
+            desc:''
          };
     }
     onChange(key,val){
@@ -28,10 +26,11 @@ class BossInfo extends React.Component {
         const path = this.props.location.pathname;
         const redirect = this.props.redirectTo
 
+
         return (
             <div>
                 {redirect&&redirect!=path?<Redirect to={this.props.redirectTo}></Redirect>:null}
-                <NavBar mode="dark">BOSS完善信息页面</NavBar>
+                <NavBar mode="dark">牛人完善信息页面</NavBar>
                 <AvatarSelector SelectorAvatar={(imgname)=>{
                     this.setState({
                         avatar:imgname
@@ -39,17 +38,12 @@ class BossInfo extends React.Component {
                 }}>
                 </AvatarSelector>
                 <InputItem onChange={(v)=>{this.onChange('title',v)}}>
-                招聘职位
+                求职岗位
                 </InputItem>
-                <InputItem onChange={(v)=>{this.onChange('company',v)}}>
-                公司名称
-                </InputItem>
-                <InputItem onChange={(v)=>{this.onChange('money',v)}}>
-                职位薪资
-                </InputItem>
+                
                 <TextareaItem
                     rows={3}
-                    title='职位要求'
+                    title='自我简介'
                     autoHeight
                     onChange={(v)=>{this.onChange('desc',v)}}
                 >
@@ -61,4 +55,4 @@ class BossInfo extends React.Component {
     }
 }
 
-export default BossInfo;
+export default GeniusInfo;

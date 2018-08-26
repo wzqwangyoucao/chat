@@ -16,14 +16,15 @@ const initState={
     type:''
 }
 
-function authSuccess(data){
+function authSuccess(obj){
+    const {pwd,...data} = obj
     return {type:AUTH_SECCESS,payload:data}
 }
 
 export function user(state=initState,action){
     switch(action.type){
         case AUTH_SECCESS:
-            return{...state,msg:'',redirectTo:getRedirectPath(action.payload),...action.payload}
+            return{...state,msg:'',redirectTo:getRedirectPath(action.payload),...action.payload}//,pwd:''}
         // case REGISTER_SUCCESS:
         //     return{...state,msg:'',redirectTo:getRedirectPath(action.payload),isAuth:true,...action.payload}
             // return{...state,msg:'',redirectTo:getReadirectPath(action.payload),isAuth:true,...action.payload}

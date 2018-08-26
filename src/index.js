@@ -14,7 +14,8 @@ import Login from './container/login/login.js';
 import Register from './container/register/register.js';
 import './index.css'
 import BossInfo from './container/bossinfo/bossinfo.js'
-
+import GeniusInfo from './container/geniusinfo/geniusinfo.js'
+import Dashboard from './component/dashboard/dashboard.js'
 
 
 //注册到store上面将所有事件
@@ -27,6 +28,10 @@ function Boss(){
     return <h2>Boss页面</h2>
 }
 
+// function Dashboard(){
+//     return <h2>DashBoard</h2>
+// }
+//boss genius me msg 4个页面
 ReactDom.render(
     (<Provider store={store}>
         <BrowserRouter>
@@ -35,9 +40,14 @@ ReactDom.render(
                 {/* 检测路由 */}
                 {/* <Route path="/boss" component={Boss}></Route> */}
 
-                <Route path="/bossinfo" component={BossInfo}></Route>
-                <Route path="/login" component={Login}></Route>
-                <Route path="/register" component={Register}></Route>
+                <Switch>
+                    <Route path="/bossinfo" component={BossInfo}></Route>
+                    <Route path="/geniusinfo" component={GeniusInfo}></Route>
+                    <Route path="/login" component={Login}></Route>
+                    <Route path="/register" component={Register}></Route>
+                    {/* 没有写Route意思是  只要上面的没有命中 就进入这个组件 */}
+                    <Route component={Dashboard}></Route>
+                </Switch>
             </div>
         </BrowserRouter>
     </Provider>)

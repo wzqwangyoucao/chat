@@ -1,6 +1,7 @@
 import React from 'react'
 import { Grid, List } from 'antd-mobile';
 import ListItem from 'antd-mobile/lib/list/ListItem';
+import PropTypes from 'prop-types'
 
 class AvatarSelector extends React.Component {
     constructor(props) {
@@ -8,6 +9,9 @@ class AvatarSelector extends React.Component {
         this.state = { 
             
          };
+    }
+    static propTypes = {
+        SelectorAvatar: PropTypes.func.isRequired
     }
     render() {
         const avatarList = 'boy,bull,chick,crab,girl,hedgehog,hippopotamus,koala,koala,lemur,man,pig,whale,woman,zebra'
