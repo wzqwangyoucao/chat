@@ -26,11 +26,13 @@ class UserCard extends React.Component {
                         >
                         </Header>
                         <Body>
-                            {v.desc.split('\n').map(v=>{console.log(v),//
-                                <div key={v}>
-                                    {v}
-                                </div>
+                            {v.type=='boss'?<div>公司：{v.company}</div>:null}
+                            {v.desc.split('\n').map(d=>{
+                                return(<div key={d}>
+                                    {d}
+                                </div>)
                             })}
+                            {v.type=='boss'?<div>薪资：{v.money}</div>:null}
                         </Body>
                     </Card>):null
                 ))}

@@ -3,6 +3,7 @@ import axios from 'axios'
 import {connect} from 'react-redux'
 import { Card, WingBlank, WhiteSpace } from 'antd-mobile';
 import {getUserList} from '../../redux/chatuser.redux'
+import UserCard from '../usercard/usercard';
 
 @connect(
     state=>state.chatuser,
@@ -29,29 +30,30 @@ class Boss extends React.Component {
         this.props.getUserList('genius');
     }
     render() {
-        const Header = Card.Header;
-        const Body = Card.Body;
+        // const Header = Card.Header;
+        // const Body = Card.Body;
         return (
-            <WingBlank>
-                <WhiteSpace></WhiteSpace>
-                {this.props.userlist.map(v=>(console.log(v),
-                    v.avatar?(<Card key={v._id}>
-                        <Header
-                        title={v.user}
-                        thumb={require(`../img/${v.avatar}.png`)}
-                        extra={<span>{v.title}</span>}
-                        >
-                        </Header>
-                        <Body>
-                            {v.desc.split('\n').map(v=>{console.log(v),//为什么这里不行啊？？？？？？？？？？？？？？？？？？？？
-                                <div key={v}>
-                                    {v}
-                                </div>
-                            })}
-                        </Body>
-                    </Card>):null
-                ))}
-            </WingBlank>
+            // <WingBlank>
+            //     <WhiteSpace></WhiteSpace>
+            //     {this.props.userlist.map(v=>(console.log(v),
+            //         v.avatar?(<Card key={v._id}>
+            //             <Header
+            //             title={v.user}
+            //             thumb={require(`../img/${v.avatar}.png`)}
+            //             extra={<span>{v.title}</span>}
+            //             >
+            //             </Header>
+            //             <Body>
+            //                 {v.desc.split('\n').map(v=>{console.log(v);
+            //                     return (<div key={v}>
+            //                         {v}
+            //                     </div>)
+            //                 })}
+            //             </Body>
+            //         </Card>):null
+            //     ))}
+            // </WingBlank>
+            <UserCard userlist={this.props.userlist}></UserCard>
         );
     }
 }

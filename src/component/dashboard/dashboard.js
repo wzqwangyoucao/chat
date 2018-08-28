@@ -6,6 +6,7 @@ import {withRouter} from 'react-router-dom'//可以进行路由
 import NavLinkBar from '../navlink/navlink.js'
 import Boss from '../../component/boss/boss.js'
 import Genius from '../../component/genius/genius.js'
+import User from '../user/user.js'
 // import {Switch,Route} from 'react-router-dom'
 
 // function Boss(){
@@ -18,9 +19,9 @@ import Genius from '../../component/genius/genius.js'
 function Msg(){
     return <h2>消息列表</h2>
 }
-function User(){
-    return <h2>个人中心</h2>
-}
+// function User(){
+//     return <h2>个人中心</h2>
+// }
 @connect(
     state=>state
 )
