@@ -108,6 +108,7 @@ export function login({user,pwd}){
                 console.log(res.data.data);
                 //规定msg是错误信息 data是真的数据
                 // dispatch(loginSuccess(res.data.data))
+                console.log(res)
                 dispatch(authSuccess(res.data.data))
             }else{
                 dispatch(errorMsg(res.data.msg))
@@ -132,6 +133,7 @@ export function register({user,pwd,type,repeatpwd}){
         axios.post('/user/register',{user,pwd,type})//传递参数
             .then(res=>{
                 if(res.status==200&&res.data.code===0){
+                    console.log(res);
                     // dispatch(registerSuccess({user,pwd,type}))
                     dispatch(authSuccess({user,pwd,type}))
                 }else{

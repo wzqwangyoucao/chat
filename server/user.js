@@ -5,6 +5,7 @@ const model = require('./model')
 const User = model.getModel('user')//获取模型
 const Chat = model.getModel('chat')//获取模型
 const _filter = {'pwd':0,'__v':0}
+// Chat.remove({},function(e,d){});
 
 Router.get('/list',function(req,res){
     const {type} = req.query//????????????????????????query是什么
@@ -18,7 +19,7 @@ Router.get('/list',function(req,res){
 })
 
 Router.post('/register',function(req,res){//引入body-parser
-    console.log(req.body)
+    // console.log(req.body)
     const{user,pwd,type}=req.body
     User.findOne({user},function(err,doc){
         if(doc){
@@ -51,6 +52,7 @@ Router.post('/update',function(req,res){
             user:doc.user,
             type:doc.type,
         },body)
+        console.log(data);
         return res.json({code:0,data})
     })
 })
