@@ -16,7 +16,7 @@ import './index.css'
 import BossInfo from './container/bossinfo/bossinfo.js'
 import GeniusInfo from './container/geniusinfo/geniusinfo.js'
 import Dashboard from './component/dashboard/dashboard.js'
-
+import Chat from './component/chat/chat.js'
 
 //注册到store上面将所有事件
 const store = createStore(reducers,compose(
@@ -24,9 +24,9 @@ const store = createStore(reducers,compose(
     window.devToolsExtension?window.devToolsExtension():f=>f//是否有调试工具
 ));
 
-function Boss(){
-    return <h2>Boss页面</h2>
-}
+// function Boss(){
+//     return <h2>Boss页面</h2>
+// }
 
 // function Dashboard(){
 //     return <h2>DashBoard</h2>
@@ -45,6 +45,7 @@ ReactDom.render(
                     <Route path="/geniusinfo" component={GeniusInfo}></Route>
                     <Route path="/login" component={Login}></Route>
                     <Route path="/register" component={Register}></Route>
+                    <Route path="/chat/:user" component={Chat}></Route>
                     {/* 没有写Route意思是  只要上面的没有命中 就进入这个组件 */}
                     <Route component={Dashboard}></Route>
                 </Switch>

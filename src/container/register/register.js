@@ -19,13 +19,15 @@ class Register extends React.Component {
         //     repeatpwd:'',
         //     type:'genius'
         //  };
-        this.register = this.register.bind(this);
+        // this.register = this.register.bind(this);
         this.handleRegister=this.handleRegister.bind(this)
     }
-    register(){
-        console.log(this.props);
-        this.props.history.push('/register')
-    }
+    // register(){
+    //     console.log(this.props);
+    //     this.props.history.push('/register')
+    // }
+
+    
     // handleChange(key,val){
     //     this.setState({
     //         [key]:val

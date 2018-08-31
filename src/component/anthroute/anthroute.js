@@ -10,7 +10,6 @@ import {connect} from 'react-redux'
 @connect(
     state=>state.user,
     {loadData}
-
 )
 class AuthRoute extends React.Component {
     componentDidMount(){
@@ -22,11 +21,14 @@ class AuthRoute extends React.Component {
         }
         // //获取用户信息
         axios.get('/user/info')//发请求
-            .then(res=>{
+            .then(
+                res=>{
+                    console.log(res);
                 if(res.status==200){
                     if(res.data.code==0){
+                        console.log(res.data)
                         //有登陆信息的
-                        this.props.loadData(res.data.data)
+                        this.props.loadData(res.data.data)//
                     }
                     else{
                         this.props.history.push('/login')

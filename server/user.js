@@ -3,6 +3,7 @@ const utils = require('utility')//加密
 const Router = express.Router();//user express的router 路由对象进行挂在
 const model = require('./model')
 const User = model.getModel('user')//获取模型
+const Chat = model.getModel('chat')//获取模型
 const _filter = {'pwd':0,'__v':0}
 
 Router.get('/list',function(req,res){
@@ -77,6 +78,17 @@ Router.get('/info',function(req,res){//挂载
         }
         if(doc){
             return res.json({code:0,data:doc})
+        }
+    })
+})
+
+Router.get('/getmsglist',function(req,res){
+    // console.log(req.cookies)
+    const user = req.cookies.user;
+    // Chat.find({'$or':[{from:user,to:user}]},function(err,doc){
+    Chat.find({},function(err,doc){
+        if(!err){
+            return res.json({code:0,msgs:doc})
         }
     })
 })
