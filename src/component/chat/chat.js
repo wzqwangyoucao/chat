@@ -19,8 +19,8 @@ class Chat extends React.Component {
         }
     }
     componentDidMount(){
-        this.props.getMsgList();
-        this.props.recvMsg();
+        // this.props.getMsgList();
+        // this.props.recvMsg();
         // const socket = io('ws://localhost:9093')
         // socket.on('recvmsg',(data)=>{
         //     // console.log(data)
@@ -35,14 +35,13 @@ class Chat extends React.Component {
         // console.log(this.state)
         // this.setState({text:''})
         const from = this.props.user._id;
-        const to   = this.props.match.params.user;
+        const to   = this.props.match.params.user;//从地址中获取
         const msg = this.state.text
         this.props.sendMsg({from,to,msg})
         this.setState({text:''})
     }
     render() {
-        console.log(this.props.chat);
-        const user = this.props.match.params.user
+        const user = this.props.match.params.user//怎么觉得没有存储过这个数据？？？？？？？
         const Item = List.Item
         return (
             <div id='chat-page'>

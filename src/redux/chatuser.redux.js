@@ -30,7 +30,7 @@ export function getUserList(type){
         axios.get('/user/list?type='+type)
         .then(res=>{
             if(res.data.code===0){
-                console.log(res.data.data)
+                console.log(res)
                 dispatch(userList(res.data.data))                   
             }
         })

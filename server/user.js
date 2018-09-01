@@ -14,6 +14,7 @@ Router.get('/list',function(req,res){
 
     // User.remove({},function(e,d){});//删除所有
     User.find({type},function(err,doc){
+        // console.log(doc);
         return res.json({code:0,data:doc})
     })
 })
@@ -33,6 +34,12 @@ Router.post('/register',function(req,res){//引入body-parser
                 return res.json({code:1,msg:'后端出错'})
             }
             const {user,type,_id} = d;
+            // console.log(d);//{ _id: 5b89598a95374f1044b13137,
+                            // user: '1',
+                            // type: 'genius',
+                            // pwd: '6b46273149e170f62cd6f88e10d0b3c4',
+                            // __v: 0 }
+          
             res.cookie('userid'),_id;
             return res.json({code:0,data:{user,type,_id}})
         })

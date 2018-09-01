@@ -15,11 +15,12 @@ const io = require('socket.io')(server)
 io.on('connection',function(socket){
     // console.log('user login');
     socket.on('sendmsg',function(data){
-        console.log(data)
+        // console.log(data)
         // io.emit('recvmsg',data)
         const {from ,to ,msg} = data;
-        const chatid = [from,to].sort().join('_');
+        const chatid = [from,to].sort().join('_');//聊天两个人有一个共同ID
         Chat.create({chatid,from,to,content:msg},function(err,doc){
+            console.log(doc);
             io.emit('recvmsg',Object.assign({},doc._doc))//...展开符
         })
     })

@@ -134,6 +134,12 @@ export function register({user,pwd,type,repeatpwd}){
             .then(res=>{
                 if(res.status==200&&res.data.code===0){
                     console.log(res);
+                    //code
+                    // :
+                    // 0
+                    // data
+                    // :
+                    // {user: "1", type: "genius", _id: "5b89598a95374f1044b13137"}
                     // dispatch(registerSuccess({user,pwd,type}))
                     dispatch(authSuccess({user,pwd,type}))
                 }else{

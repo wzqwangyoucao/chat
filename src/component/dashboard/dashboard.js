@@ -7,6 +7,9 @@ import NavLinkBar from '../navlink/navlink.js'
 import Boss from '../../component/boss/boss.js'
 import Genius from '../../component/genius/genius.js'
 import User from '../user/user.js'
+import {getMsgList,sendMsg,recvMsg} from '../../redux/chat.redux.js'
+
+
 // import {Switch,Route} from 'react-router-dom'
 
 // function Boss(){
@@ -23,13 +26,19 @@ function Msg(){
 //     return <h2>个人中心</h2>
 // }
 @connect(
-    state=>state
+    state=>state,
+    {getMsgList,sendMsg,recvMsg}
+
 )
 class Dashboard extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {  };
+    }
+    componentDidMount(){
+        this.props.getMsgList();
+        this.props.recvMsg();
     }
     render() {
         // console.log(this.props)

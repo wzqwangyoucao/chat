@@ -45,7 +45,8 @@ function msgRecv(msg){
 export function recvMsg(){
     return dispatch=>{
         socket.on('recvmsg',function(data){
-            console.log('recvmsg'+data)
+            console.log(data)
+
             dispatch(msgRecv(data))
         })
     }
@@ -55,7 +56,7 @@ export function getMsgList(){
     return dispatch=>{
         axios.get('/user/getmsglist')
             .then(res=>{
-                if(res.state==200&&res.data.code==0){
+                if(res.status==200&&res.data.code==0){
                     dispatch(msgList(res.data.msgs))
                 }
             })
