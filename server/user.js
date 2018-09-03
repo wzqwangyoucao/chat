@@ -100,7 +100,7 @@ Router.get('/getmsglist',function(req,res){
             users[v._id] = {name:v.user,avatar:v.avatar}
         })
             // Chat.find({'$or':[{from:user,to:user}]},function(err,doc){
-        Chat.find({'$or':[{from:user},{to:user}]},function(err,doc){
+        Chat.find({'$or':[{from:user},{to:user}]},function(err,doc){//找出from或者to是发送者的聊天
             if(!err){
                 return res.json({code:0,msgs:doc,users:users})
             }

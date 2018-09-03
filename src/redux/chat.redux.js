@@ -1,12 +1,12 @@
 import axios from 'axios'
 import io from 'socket.io-client'
-const socket = io('ws://localhost:9093')
+const socket = io('ws://localhost:9093')//连接server的
 
-//获取聊天列表
+//获取聊天列表   用户之前与用户之间的聊天   进行聊天记录的显示
 const MSG_LIST='MSG_LIST'
-//读取信息
+//读取信息   用户发送一条  我们能够收到信息
 const MSG_RECV='MSG_RECV'
-//标识以读
+//标识以读   标识出我们的信息是不是已经读过
 const MSG_READ='MSG_READ'
 
 const initState = {
@@ -45,7 +45,7 @@ function msgRecv(msg,userid){
 }
 
 export function recvMsg(){
-    return (dispatch,getState)=>{
+    return (dispatch,getState)=>{//getState获取当前redux里面所有的数据
         socket.on('recvmsg',function(data){
             console.log(data)
             const userid = getState().user._id
@@ -58,7 +58,18 @@ export function getMsgList(){
     return (dispatch,getState)=>{
         axios.get('/user/getmsglist')
             .then(res=>{
-                // console.log('getState',getState())//当前redux里面所有的数据
+                // console.log('getState',getState())
+                //获取当前redux里面所有的数据
+                // {user: {…}, chatuser: {…}, chat: {…}}
+                // chat
+                // :
+                // {chatmsg: Array(0), unread: 0, users: {…}}
+                // chatuser
+                // :
+                // {userlist: Array(2)}
+                // user
+                // :
+                // {redirectTo: "/genius", msg: "", user: "1", type: "genius", _id: "5b89598a95374f1044b13137", …}
                 if(res.status==200&&res.data.code==0){
                     const userid = getState().user._id
                     dispatch(msgList(res.data.msgs,res.data.users,userid))

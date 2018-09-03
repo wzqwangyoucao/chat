@@ -12,7 +12,7 @@ const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server)
 
-io.on('connection',function(socket){
+io.on('connection',function(socket){//on监听链接   socket当前这次链接的socket
     // console.log('user login');
     socket.on('sendmsg',function(data){
         // console.log(data)

@@ -8,7 +8,7 @@ import Boss from '../../component/boss/boss.js'
 import Genius from '../../component/genius/genius.js'
 import User from '../user/user.js'
 import {getMsgList,sendMsg,recvMsg} from '../../redux/chat.redux.js'
-
+import Msg from '../msg/msg.js'
 
 // import {Switch,Route} from 'react-router-dom'
 
@@ -19,9 +19,9 @@ import {getMsgList,sendMsg,recvMsg} from '../../redux/chat.redux.js'
 // function Genius(){
 //     return <h2>Genius页面</h2>
 // }
-function Msg(){
-    return <h2>消息列表</h2>
-}
+// function Msg(){
+//     return <h2>消息列表</h2>
+// }
 // function User(){
 //     return <h2>个人中心</h2>
 // }

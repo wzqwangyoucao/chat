@@ -4,7 +4,7 @@ import io from 'socket.io-client'
 import {connect} from 'react-redux'
 import {getMsgList,sendMsg,recvMsg} from '../../redux/chat.redux.js'
 import { getChatId } from '../../util.js';
-const socket = io('ws://localhost:9093')
+const socket = io('ws://localhost:9093')//手动发起连接
 
 @connect(
     state=>state,
@@ -53,7 +53,7 @@ class Chat extends React.Component {
         this.setState({text:'',showEmoji:false})
     }
     render() {
-        const userid = this.props.match.params.user//怎么觉得没有存储过这个数据？？？？？？？
+        const userid = this.props.match.params.user
         const Item = List.Item
         const users = this.props.chat.users;
         const chatid = getChatId(userid,this.props.user._id)
