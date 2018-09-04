@@ -55,7 +55,10 @@ class Msg extends React.Component {
                         }
                         return(
                             <List key={lastItem._id}>
-                                <Item  extra={<Badge text={unreadNum}></Badge>} thumb={require(`../img/${userinfo[targetId].avatar}.png`)}  arrow="horizontal" onClick={this.props.history.push(`/chat/${targetId}`)}>
+                                <Item  extra={<Badge text={unreadNum}></Badge>}
+                                 thumb={require(`../img/${userinfo[targetId].avatar}.png`)}
+                                   arrow="horizontal" 
+                                   onClick={()=>{return this.props.history.push(`/chat/${targetId}`)}}>
                                             {/* 水平箭头 */}
                                     {lastItem.content}
                                     <Brief>{userinfo[targetId].name}</Brief>
