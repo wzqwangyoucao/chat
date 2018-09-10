@@ -62,16 +62,46 @@ function msgRead({from,userid,num}){
     return {type:MSG_READ,payload:{from,userid,num}}
 }
 
+// 异步发展过程
+// setTimeout(()=>{console.log('1')},1000);
+// 不喜欢 因为callback hell 回调地狱
+// setTimeout(()=>
+// {
+//     setTimeout(()=>
+//     {
+//         setTimeout(()=>
+//         {
+//             console.log('1')
+//         },1000); 
+//     },1000); 
+// },1000);
+// Promise
+// axios.post().then(res=>{
+
+// })
+// async+await配合使用  await必须在async内部
+
+// export function readMsg(from){
+//     return (dispatch,getState)=>{
+//         axios.post('/user/readmsg',{from})
+//             .then(res=>{
+//                 const userid = getState().user._id;
+//                 if(res.status==200&&res.data.code==0){
+//                     dispatch(msgRead({from,userid,num:res.data.num}))
+//                 }
+//             })
+//     }
+// }
+
 export function readMsg(from){
-    console.log(from);
-    return (dispatch,getState)=>{
-        axios.post('/user/readmsg',{from})
-            .then(res=>{
+    return async(dispatch,getState)=>{
+        const res = await  axios.post('/user/readmsg',{from})
+            // .then(res=>{
                 const userid = getState().user._id;
                 if(res.status==200&&res.data.code==0){
                     dispatch(msgRead({from,userid,num:res.data.num}))
                 }
-            })
+            // })
     }
 }
 

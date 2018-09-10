@@ -54,4 +54,3 @@ ReactDom.render(
     </Provider>)
     ,document.getElementById('root')
 );
-

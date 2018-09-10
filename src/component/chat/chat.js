@@ -4,6 +4,7 @@ import io from 'socket.io-client'
 import {connect} from 'react-redux'
 import {getMsgList,sendMsg,recvMsg,readMsg} from '../../redux/chat.redux.js'
 import { getChatId } from '../../util.js';
+import QueueAnim from 'rc-queue-anim'
 const socket = io('ws://localhost:9093')//手动发起连接
 
 @connect(
@@ -77,6 +78,9 @@ class Chat extends React.Component {
                 <NavBar model='dark' icon={<Icon type='left' />} onLeftClick={()=>this.props.history.goBack()} >
                     {users[userid].name}
                 </NavBar>
+
+                <QueueAnim type='bottom' delay={100}>
+
                 {chatmsg.map(v=>{
                     const avatar = require(`../img/${users[v.from].avatar}.png`)
                     return v.from==userid?(
@@ -85,11 +89,14 @@ class Chat extends React.Component {
                         </List>
                     ):(
                         <List key={v._id} >
-                            <Item className='chat-me' extra={<img src={avatar} />}> {v.content}</Item>
+                            <Item className='chat-me' extra={<img alt='头像' src={avatar} />}> {v.content}</Item>
                         </List>
                     )
                     // return <p key={v._id}>{v.content}</p>
                 })}
+
+                </QueueAnim>
+
                 <div className='stick-footer'>
                     <List>
                         <InputItem

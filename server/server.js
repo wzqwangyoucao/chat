@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const model = require('./model')
 const Chat = model.getModel('chat')//获取模型
+const path = require('path')
 
 const app = express();
 //和express配合
@@ -35,8 +36,14 @@ app.use('/user',userRouter)//开启中间件   子路由
 // app.get('/book',function(req,res,next){
 //     res.send('book');
 // })
-
-
+app.use(function(req,res,next){
+    if(req.url.startsWith('/user/')||req.url.startsWith('/static/')){
+        return next
+    }else{
+        return res.sendFile(path.resolve('build/index.html'))
+    }
+})
+app.use('/',express.static(path.resolve('build')))
 server.listen(9093,function(){
     console.log('Node app start port at 9093');
 })

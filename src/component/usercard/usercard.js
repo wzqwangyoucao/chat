@@ -22,7 +22,7 @@ class UserCard extends React.Component {
         return (
             <WingBlank>
                 <WhiteSpace></WhiteSpace>
-                {this.props.userlist.map(v=>(console.log(this.props),
+                {this.props.userlist.map(v=>(
                     v.avatar?
                     (<Card onClick={()=>this.handleClick(v)} key={v._id}>
                         <Header

@@ -9,6 +9,8 @@ import Genius from '../../component/genius/genius.js'
 import User from '../user/user.js'
 import {getMsgList,sendMsg,recvMsg} from '../../redux/chat.redux.js'
 import Msg from '../msg/msg.js'
+import QueueAnim from 'rc-queue-anim'
+
 
 // import {Switch,Route} from 'react-router-dom'
 
@@ -78,6 +80,7 @@ class Dashboard extends React.Component {
                 component:User
             }
         ];
+        const page = navList.find(v=>v.path=pathname)
         return (
             <div>
                 {/* <h2>header</h2> */}
@@ -89,11 +92,14 @@ class Dashboard extends React.Component {
                 {/* <Route path='/genius' Component={Genius}></Route> */}
                 {/* <h2>footer</h2> */}
                 <div style={{marginTop:45}}>
-                    <Switch>
+                <QueueAnim>
+                    {/* <Switch>
                         {navList.map(v=>(
                             <Route key={v.path} path={v.path} component={v.component}></Route>
                         ))}
-                    </Switch>
+                    </Switch> */}
+                    <Route key={page.path} path={page.path} component={page.component}></Route>
+                </QueueAnim>
                 </div>
                 <NavLinkBar data={navList}></NavLinkBar>
             </div>
