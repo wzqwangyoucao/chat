@@ -80,7 +80,7 @@ class Dashboard extends React.Component {
                 component:User
             }
         ];
-        const page = navList.find(v=>v.path=pathname)
+        const page = navList.find(v=>v.path==pathname)
         return (
             <div>
                 {/* <h2>header</h2> */}
